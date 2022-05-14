@@ -1,3 +1,5 @@
+#include "main/GlobalMacros.h"
+#if ANGLE_SENSOR_SEAT == 3 || ANGLE_SENSOR_BACK == 3
 /***************************************************************************//**
  *   @file   ADXL362Reg.h
  *   @brief  Header file of ADXL362 Registers.
@@ -194,3 +196,4 @@
 
 
 #endif /* __ADXL362REG_H__ */
+#endif

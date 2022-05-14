@@ -1,3 +1,5 @@
+#include "main/GlobalMacros.h"
+#if ANGLE_SENSOR_SEAT == 3 || ANGLE_SENSOR_BACK == 3
 /***************************************************************************//**
  *   @file   ADXL362.c
  *   @brief  Implementation of ADXL362 Driver.
@@ -43,7 +45,7 @@
 /******************************************************************************/
 /***************************** Include Files **********************************/
 /******************************************************************************/
-#include "ADXL362.h"
+#include "SparkFunADXL362.h"
 #include <SPI.h>
 
 /******************************************************************************/
@@ -63,7 +65,7 @@ ADXL362::SPI_read(byte  thisRegister, unsigned char* pReadData,
 
     volatile unsigned char *data = pReadData;   // result to return
 
-    _spi->beginTransaction(SPISettings(5000000, MSBFIRST, SPI_MODE0));
+    _spi->beginTransaction(particle::__SPISettings(5000000, MSBFIRST, SPI_MODE0));
     
     // take the chip select low to select the device:
     digitalWrite(_ss, LOW);
@@ -96,7 +98,7 @@ ADXL362::SPI_write(byte  thisRegister, unsigned char* pData, int bytesToWrite) {
 
     unsigned char* data = pData;
    
-    _spi->beginTransaction(SPISettings(5000000, MSBFIRST, SPI_MODE0)); 
+    _spi->beginTransaction(particle::__SPISettings(5000000, MSBFIRST, SPI_MODE0));
         
     // take the chip select low to select the device:
     digitalWrite(_ss, LOW);  
@@ -540,5 +542,4 @@ void ADXL362::setIntMap1(unsigned char  awakeMap)
 {
     setRegisterValue(awakeMap, ADXL362_REG_INTMAP1, 1);
 }
-
-ADXL362 adiAccelerometer;
+#endif

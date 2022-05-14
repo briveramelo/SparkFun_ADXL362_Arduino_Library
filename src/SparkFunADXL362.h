@@ -1,3 +1,5 @@
+#include "main/GlobalMacros.h"
+#if ANGLE_SENSOR_SEAT == 3 || ANGLE_SENSOR_BACK == 3
 /***************************************************************************//**
  *   @file   ADXL362.h
  *   @brief  Header file of ADXL362 Driver.
@@ -139,5 +141,5 @@ public:
     bool check(void); 
 };
 
-extern ADXL362 adiAccelerometer;
 #endif /* __ADXL362_H__ */
+#endif
